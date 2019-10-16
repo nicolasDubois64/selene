@@ -6,7 +6,7 @@ public class TestData {
 
     public static void main(String args[]){
         for(SeleneData data : SeleneData.values()){
-            System.out.println(data.getTest());
+            System.out.println(data.toString());
         }
     }
 }

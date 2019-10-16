@@ -60,15 +60,19 @@ public enum SeleneData {
 		this.max = max;
 	}
 
-	public String getTest(){
+	public String getName(){
+		return name;
+	}
+
+	@Override
+	public String toString() {
 		StringBuilder sb = new StringBuilder(name);
 		if(!("".equals(chemicalElement)))
-		sb.append('(' + chemicalElement + ')');
+			sb.append('(' + chemicalElement + ')');
 		sb.append(", " + kind.getName());
 		sb.append(", " + min + unit.getSymbol());
 		sb.append(" < x < ");
 		sb.append(max + unit.getSymbol());
 		return sb.toString();
 	}
-
 }
