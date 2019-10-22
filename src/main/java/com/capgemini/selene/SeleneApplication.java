@@ -8,8 +8,10 @@ import com.capgemini.selene.engine.SeleneDataManager;
 @SpringBootApplication
 public class SeleneApplication {
 
-	public static void main(String[] args) {
+	// Please put this at false when deploying ;)
+	public static boolean DEBUG = true;
 
+	public static void main(String[] args) {
 		// Prepare data
 		SeleneDataManager.generateData();
 

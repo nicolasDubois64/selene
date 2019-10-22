@@ -30,6 +30,12 @@ public class SeleneController {
         return sb.toString();
     }
 
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value="/dfm_stats", method=RequestMethod.GET)
+    public String getStats(){
+	    return DataFluctuationManager.getStats();
+    }
+
     @RequestMapping(value="/next_day", method=RequestMethod.GET)
     public String getNextDay(){
         SeleneEngine.nextDay();
