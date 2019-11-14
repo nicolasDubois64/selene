@@ -3,8 +3,8 @@ package com.capgemini.selene.randomizer;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-import com.capgemini.selene.SeleneApplication;
 import com.capgemini.selene.model.SeleneData;
+import com.capgemini.selene.model.SeleneDataEnum;
 
 // Todo : if increase keep having the same value, timeLeft should be generated with a smaller value, and increase should have a proportionnaly greater chance to be inverted.
 public class DataFluctuationManager {
@@ -81,5 +81,9 @@ public class DataFluctuationManager {
         sb.append("Shift=" + shift + "; ");
         sb.append(" ]");
         return sb.toString();
+    }
+
+    public boolean isIncrease() {
+        return increase;
     }
 }
