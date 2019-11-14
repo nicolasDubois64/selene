@@ -10,7 +10,8 @@ import com.capgemini.selene.model.SeleneEvent;
 
 public class SeleneDataParser {
 	
-	private final static DeserialiserJsonImpl<SeleneEvent> eventParser = new DeserialiserJsonImpl<SeleneEvent>(SeleneEvent.class);
+	private static DeserialiserJsonImpl<SeleneEvent> eventParser = new DeserialiserJsonImpl<SeleneEvent>(SeleneEvent.class);
+	private final static String FILENAME_JSON_EVENTS = "RandomEvents.json";
 	
 	/*
 	 * @deprecated use it only for testing
@@ -18,7 +19,7 @@ public class SeleneDataParser {
 	public static SeleneEvent getTest() {
 		SeleneEvent result = null;
 		try {
-			File file = new ClassPathResource("test.json").getFile();
+			File file = new ClassPathResource("jsonTest.json").getFile();
 			result =  eventParser.getObject(file);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -34,7 +35,7 @@ public class SeleneDataParser {
 	public static List<SeleneEvent> getSeleneEvents() {
 		List<SeleneEvent> result = null;
 		try {
-			File file = new ClassPathResource("seleneEvents.json").getFile();
+			File file = new ClassPathResource(FILENAME_JSON_EVENTS).getFile();
 			result = eventParser.getList(file);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
