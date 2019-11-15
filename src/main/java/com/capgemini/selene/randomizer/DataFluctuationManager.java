@@ -55,7 +55,7 @@ public class DataFluctuationManager {
 
     @Override
     public String toString() {
-        return data.getName() + " : " + (increase ? "increasing" : "decreasing") + " during " + timeLeft + " time unit(s).";
+        return (increase ? "↑" : "↓") + " during " + timeLeft + " days";
     }
 
     public static String getStats(){
@@ -71,7 +71,7 @@ public class DataFluctuationManager {
         return sb.toString();
     }
 
-    private String debugString(int shift){
+    /*private String debugString(int shift){
         StringBuilder sb = new StringBuilder("Data ");
         sb.append(data.getName());
         sb.append("[ ");
@@ -81,7 +81,7 @@ public class DataFluctuationManager {
         sb.append("Shift=" + shift + "; ");
         sb.append(" ]");
         return sb.toString();
-    }
+    }*/
 
     public boolean isIncrease() {
         return increase;

@@ -33,7 +33,7 @@ public class SeleneController {
 	    SeleneEngine.nextDay();
 	    StringBuilder sb = new StringBuilder();
         for(DataFluctuationManager dfm : SeleneDataManager.fluctuationManagers){
-            sb.append(dfm.getData().toString()).append(" - ").append(dfm.toString()).append("<br />");
+            sb.append(dfm.getData().toString()).append(dfm.toString()).append("<br />");
         }
         return sb.toString();
     }

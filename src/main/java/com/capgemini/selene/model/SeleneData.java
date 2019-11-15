@@ -1,8 +1,11 @@
 package com.capgemini.selene.model;
 
+import java.text.DecimalFormat;
+
 public class SeleneData {
     private final String name;
     private final Kind kind;
+    private final boolean isPolluant;
     private final Unit unit;
     private String chemicalElement;
     private final float min;
@@ -19,9 +22,10 @@ public class SeleneData {
         return initialValue;
     }
 
-    public SeleneData(String name, Kind kind, Unit unit, String chemicalElement, float min, float max){
+    public SeleneData(String name, Kind kind, boolean isPolluant,Unit unit, String chemicalElement, float min, float max){
         this.name = name;
         this.kind = kind;
+        this.isPolluant = isPolluant;
         this.unit = unit;
         this.chemicalElement = chemicalElement;
         this.min = min;
@@ -44,6 +48,8 @@ public class SeleneData {
     public Unit getUnit() {
         return unit;
     }
+
+    public boolean isPolluant() { return isPolluant; }
 
     public String getChemicalElement() {
         return chemicalElement;
@@ -81,21 +87,24 @@ public class SeleneData {
         this.fluctuationMax = fluctuationMax;
     }
 
+
+
     public void fluctuate(float v) {
         value += v;
     }
 
     @Override
     public String toString() {
+        DecimalFormat df2 = new DecimalFormat("#.##");
         StringBuilder sb = new StringBuilder(name);
         if(!("".equals(chemicalElement)))
-            sb.append('(' + chemicalElement + ')');
+            sb.append(" (" + chemicalElement + ")");
         sb.append(", " + kind.getName());
-        sb.append(", " + min + unit.getSymbol());
+        sb.append(", [" + min + unit.getSymbol());
         sb.append(" < ");
-        sb.append(value);
+        sb.append(df2.format(value));
         sb.append(" < ");
-        sb.append(max + unit.getSymbol());
+        sb.append(max + unit.getSymbol() + "]");
         return sb.toString();
     }
 }

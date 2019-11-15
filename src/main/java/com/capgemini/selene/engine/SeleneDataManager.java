@@ -20,6 +20,7 @@ public class SeleneDataManager {
         for(SeleneData data : dataset){
             fluctuationManagers.add(new DataFluctuationManager(data));
         }
+        fluctuationManagers.stream().sorted(SeleneDataManager::compare);
     }
 
     private static void generateDataset() {
@@ -29,7 +30,7 @@ public class SeleneDataManager {
     }
 
     private static void instanciateData(SeleneDataEnum data) {
-        dataset.add(new SeleneData(data.getName(), data.getKind(), data.getUnit(), data.getChemicalElement(), data.getMin(), data.getMax()));
+        dataset.add(new SeleneData(data.getName(), data.getKind(), data.isPolluant(), data.getUnit(), data.getChemicalElement(), data.getMin(), data.getMax()));
     }
 
     public static void fluctuate() {
@@ -42,5 +43,10 @@ public class SeleneDataManager {
             data.fluctuate(dfm.isIncrease() ? delta : -delta);
 
         }
+    }
+// TODO : this lol.
+    public static int compare(DataFluctuationManager dfm1, DataFluctuationManager dfm2){
+
+        return 0;
     }
 }
