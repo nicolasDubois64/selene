@@ -1,14 +1,38 @@
 [
 	{
 		"title": "Troposphère VII",
-		"description": "La fusee Troposphere VII du programme spatial congolais vient d'atteindre Phobos, l'un des satellites de Mars",
+		"description": "La fusée Troposphère VII du programme spatial congolais vient d'atteindre Phobos, l'un des satellites de Mars",
 		"criticality": "low",
-		"probability": "10"
+		"probability": "30"
 	},
 	{
 		"title": "USCSS Nostromo",
-		"description": "Le cargo interstellaire USCSS Nostromo vient d'atterrir sur Selene avec a son bord un seul membre d'equipage, Ellen Ripley.",
+		"description": "Le cargo interstellaire USCSS Nostromo vient d'atterrir sur Selene avec à son bord un seul membre d'equipage, Ellen Ripley.",
 		"criticality": "low",
-		"probability": "5"
+		"probability": "40"
+	},
+	{
+		"title": "Doom Slayer",
+		"description": "L'indice de la bourse démoniaque est en chute libre depuis le réveil du Doom Slayer sur Mars.",
+		"criticality": "medium",
+		"probability": "20"
+	},
+	{
+		"title": "Christ Cosmique",
+		"description": "Le Christ cosmique a fait sensation en annonçant sa candidature à l'élection présidentielle 2032. Un temps démentie, l'information pourrait être authentique.",
+		"criticality": "medium",
+		"probability": "50"
+	},
+	{
+		"title": "Cheyenne Moutain",
+		"description": "Pic d'énergie anormal détecté aux alentours de Cheyenne Moutain, une base de l'US Air Force.",
+		"criticality": "low",
+		"probability": "60"
+	},
+	{
+		"title": "Attaque des pti zom vert",
+		"description": "Effervescence sur la planète Terre. Les petits bonshommes verts ont enfin décidé de nous rendre visite.",
+		"criticality": "high",
+		"probability": "10"
 	}
 ]

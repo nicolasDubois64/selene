@@ -10,6 +10,7 @@ import com.capgemini.selene.engine.SeleneEngine;
 import com.capgemini.selene.model.SeleneEvent;
 import com.capgemini.selene.parser.SeleneDataParser;
 import com.capgemini.selene.randomizer.DataFluctuationManager;
+import com.capgemini.selene.randomizer.RandomEventsManager;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -22,9 +23,10 @@ public class SeleneController {
         return "Bonjour père.";
     }
 	
-	@RequestMapping(value="/json", method=RequestMethod.GET)
-    public SeleneEvent getEvents() {
-        return SeleneDataParser.getTest();
+	@RequestMapping(value="/event", method=RequestMethod.GET)
+    public SeleneEvent getEvent() {
+		RandomEventsManager manager = new RandomEventsManager();
+		return manager.getNextEvent();
     }
 
     @CrossOrigin(origins = "*")
