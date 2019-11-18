@@ -2,6 +2,7 @@ package com.capgemini.selene.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class DeserialiserJsonImpl<T> implements DeserialiserJson<T> {
 	@Override
 	public List<T> getList(File file) throws IOException {
 		return objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz));
+	}
+
+	@Override
+	public List<T> getList(InputStream stream) throws IOException {
+		return objectMapper.readValue(stream, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz));
 	}
 
 }
