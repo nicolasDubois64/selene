@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class SeleneController {
@@ -42,7 +44,7 @@ public class SeleneController {
         SeleneEngine.nextDay();
         StringBuilder sb = new StringBuilder();
         sb.append("Day ");
-        sb.append(SeleneEngine.getDayIndex());
+        sb.append(SeleneEngine.getDay());
         sb.append(". Current day is ");
         sb.append(SeleneEngine.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         return sb.toString();
@@ -50,9 +52,9 @@ public class SeleneController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/data_json", method = RequestMethod.GET)
-    public SeleneData getDataJson() {
+    public List<SeleneData> getDataJson() {
         SeleneEngine.nextDay();
-        return SeleneDataManager.fluctuationManagers.get(0).getData();
+        return SeleneDataManager.fluctuationManagers.stream().map(DataFluctuationManager::getData).collect(Collectors.toList());
     }
 
 }

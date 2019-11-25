@@ -21,7 +21,7 @@ public enum SeleneDataEnum {
     //AIR
     //Composés naturels
     DIAZOTE("Diazote", Kind.AIR, false, Unit.PERCENTAGE, "N2", 65, 72),
-    DIOXYGENE("Diazote", Kind.AIR, false, Unit.PERCENTAGE, "O2", 17, 21),
+    DIOXYGENE("Dioxygène", Kind.AIR, false, Unit.PERCENTAGE, "O2", 17, 21),
     DIOXYDE_DE_CARBONE("Dioxyde de carbone", Kind.AIR, false, Unit.PERCENTAGE, "CO2", 0, 0.8f),
     // Polluants
     DIOXYDE_AZOTE("Dioxyde d'azote", Kind.AIR, true, Unit.PERCENTAGE, "NO2", 0, 0.01f),

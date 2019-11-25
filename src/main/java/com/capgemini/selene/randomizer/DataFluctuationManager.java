@@ -1,43 +1,84 @@
 package com.capgemini.selene.randomizer;
 
 import com.capgemini.selene.model.SeleneData;
+import com.capgemini.selene.model.Unit;
 
 import java.util.Random;
 
-// Todo : if increase keep having the same value, timeLeft should be generated with a smaller value, and increase should have a proportionnaly greater chance to be inverted.
 public class DataFluctuationManager {
 
     private SeleneData data;
     private boolean increase;
-    private int timeLeft = -1;
-    private int lastTimeLeftGenerated = 0;
+    private int timeLeft;
+    private int lastTimeLeftGenerated;
     private float nonPolluantMin;
     private float nonPolluantMax;
     private float mediumValue;
     private float polluantDelta;
+    private FluctuationMode mode;
+    private float straightTarget = 0;
+    private float straightStep = 0;
+
+    private enum FluctuationMode {
+        STRAIGHT,
+        RANDOM,
+        PATTERN
+    }
 
     public DataFluctuationManager(SeleneData data) {
         this.data = data;
         Random random = new Random();
         this.timeLeft = random.nextInt(20) + 1;
         this.lastTimeLeftGenerated = this.timeLeft;
-        this.increase = random.nextBoolean();
+        this.increase = (data.isPolluant() && Unit.PERCENTAGE.equals(data.getUnit())) ? true : random.nextBoolean();
         mediumValue = data.getInitialValue();
         if (data.isPolluant())
             polluantDelta = ((data.getMax() - data.getMin()) / 100f) * 5f;
         else {
-            Random rand = new Random();
-            nonPolluantMin = data.getMin() + (((data.getInitialValue() - data.getMin()) * rand.nextInt(25 - 18) + 18) / 100f);
-            nonPolluantMax = data.getMax() - (((data.getMax() - data.getInitialValue()) * rand.nextInt(25 - 18) + 18) / 100f);
+            nonPolluantMin = data.getMin() + (((data.getMax() - data.getMin()) * (random.nextInt(47 - 41) + 41)) / 100f);
+            nonPolluantMax = data.getMax() - (((data.getMax() - data.getMin()) * (random.nextInt(47 - 41) + 41)) / 100f);
         }
-
+        mode = FluctuationMode.RANDOM;
     }
 
-    public int nextDay() {
+    public void nextDay() {
+        if (data.getUnit() == Unit.PERCENTAGE) {
+            if (Double.compare(data.getValue(), 100f) >= 0) return;
+            if (data.isPolluant()) {
+                addRandomValue();
+                return;
+            }
+        }
+        switch (mode) {
+            case RANDOM:
+                doRandom();
+                break;
+            case STRAIGHT:
+                doStraight();
+                break;
+            case PATTERN:
+//                doPattern();
+                break;
+            default:
+                return;
+        }
+    }
+
+    public SeleneData getData() {
+        return data;
+    }
+
+    @Override
+    public String toString() {
+        return (increase ? "↑" : "↓") + " during " + timeLeft + " days";
+    }
+
+    // RANDOM
+    private void doRandom() {
         if (timeLeft == 0)
             fluctuate();
-        updateDataValue();
-        return timeLeft > 0 ? --timeLeft : timeLeft;
+        addRandomValue();
+        if (timeLeft > 0) timeLeft--;
     }
 
     /**
@@ -57,19 +98,24 @@ public class DataFluctuationManager {
     private void fluctuatePolluant() {
         mediumValue += polluantDelta;
         if (!increase && data.getValue() < mediumValue - (mediumValue * data.getFluctuationMax()))
-            invert();
-    }
-
-    /**
-     * Non Polluants just fluctuate between two random values by a little amount each time.
-     */
-    private void fluctuateNonPolluant() {
-        if (data.getValue() < nonPolluantMin || data.getValue() > nonPolluantMax)
-            invert();
+            setStraight();
         else
             generateIncreaseAndTimeLeft();
     }
 
+    /**
+     * Non Polluants just addValue between two random values by a little amount each time.
+     */
+    private void fluctuateNonPolluant() {
+        if (data.getValue() < nonPolluantMin || data.getValue() > nonPolluantMax)
+            setStraight();
+        else
+            generateIncreaseAndTimeLeft();
+    }
+
+    /**
+     * If the timeleft == 0, a new one is generated. If the same direction is randomized, the timeleft will be shorter and shorter until the opposite direction is picked.
+     */
     private void generateIncreaseAndTimeLeft() {
         Random random = new Random();
         boolean oldIncrease = increase;
@@ -83,38 +129,52 @@ public class DataFluctuationManager {
         lastTimeLeftGenerated = timeLeft;
     }
 
-    private void invert() {
-        System.err.println(debugString());
-        Random rand = new Random();
-        increase = !increase;
-        timeLeft = lastTimeLeftGenerated == 20 ? rand.nextInt(20) + 1 : rand.nextInt(20 - lastTimeLeftGenerated) + lastTimeLeftGenerated;
-        lastTimeLeftGenerated = timeLeft;
-    }
-
-    private void updateDataValue() {
+    /**
+     * Generate a new value for the data.
+     */
+    private void addRandomValue() {
         Random rand = new Random();
         float i = rand.nextFloat() * (data.getFluctuationMax() - data.getFluctuationMin()) + data.getFluctuationMin();
-       /* if (data.getName() == "Calcium")
-            System.err.println(data.getName()
-                    + data.debugString()
-                    + "mediumValue : " + mediumValue
-                    //+ ";  delta : " + delta
-                    + "; i : " + i
-                    + "; npolMin : " + nonPolluantMin
-                    + "; npolMax : " + nonPolluantMax
-                    + "]");*/
-        data.fluctuate(increase ? i : -i);
-
+//        debugUpdateDataValue(i);
+        data.addValue(increase ? i : -i);
     }
 
-    public SeleneData getData() {
-        return data;
+    private void setStraight() {
+        System.err.println(data.getName() + " straight mode");
+        mode = FluctuationMode.STRAIGHT;
+        //        System.err.println(debugString());
+        Random rand = new Random();
+        increase = !increase;
+        int delta = rand.nextInt(6) - 3;
+        straightTarget = mediumValue + (((data.getMax() - data.getMin()) * (float) delta) / 100f);
+        straightStep = (Math.abs(data.getValue() - mediumValue) * ((float) rand.nextInt(25 - 10) + 10)) / 100f;
+        if (!data.isPolluant() && data.getValue() > nonPolluantMax) straightStep = -straightStep;
+        timeLeft = 0;
+        lastTimeLeftGenerated = 0;
     }
 
-    @Override
-    public String toString() {
-        return (increase ? "↑" : "↓") + " during " + timeLeft + " days";
+    // STRAIGHT
+
+    private void doStraight() {
+        data.addValue(straightStep);
+        if ((increase && data.getValue() > straightTarget) || (!increase && data.getValue() < straightTarget)) {
+            increase = !increase;
+            setRandom();
+        }
     }
+
+    private void setRandom() {
+        System.err.println(data.getName() + " random mode");
+        straightTarget = 0;
+        straightStep = 0;
+        mode = FluctuationMode.RANDOM;
+        timeLeft = 0;
+    }
+
+    // TODO : PATTERN
+
+    // DEBUG
+
 
     public void reset() {
         mediumValue = data.getInitialValue();
@@ -128,5 +188,17 @@ public class DataFluctuationManager {
                 + "; npolMin : " + nonPolluantMin
                 + "; npolMax : " + nonPolluantMax
                 + "]";
+    }
+
+    private void debugUpdateDataValue(float i) {
+        if (data.getName() == "Calcium")
+            System.err.println(data.getName()
+                    + data.debugString()
+                    + "mediumValue : " + mediumValue
+                    //+ ";  delta : " + delta
+                    + "; i : " + i
+                    + "; npolMin : " + nonPolluantMin
+                    + "; npolMax : " + nonPolluantMax
+                    + "]");
     }
 }

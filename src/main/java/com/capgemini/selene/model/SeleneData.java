@@ -34,9 +34,8 @@ public class SeleneData {
         this.chemicalElement = chemicalElement;
         this.min = min;
         this.max = max;
-        this.value = min + ((max - min) / 2f);
+        this.value = isPercentagePolluant() ? 0 : min + ((max - min) / 2f);
         this.initialValue = this.value;
-        // TODO : Should be calculated based on a percentage of the distance between initial value & min / max.
         computeFluctuation();
         rank = rankProvider.getAndIncrement();
     }
@@ -89,8 +88,9 @@ public class SeleneData {
         return rank;
     }
 
-    public void fluctuate(float v) {
-        value += v;
+    public void addValue(float v) {
+        if (!(value + v < 0 || (value + v > 100 && unit == Unit.PERCENTAGE)))
+            value += v;
     }
 
     @Override
@@ -121,8 +121,17 @@ public class SeleneData {
         return sb.toString();
     }
 
+    public boolean isPercentagePolluant() {
+        return Unit.PERCENTAGE.equals(unit) && isPolluant;
+    }
+
     private void computeFluctuation() {
-        fluctuationMin = ((max - initialValue) * (float) (isPolluant ? 5 : 3) / 100f);
-        fluctuationMax = ((max - initialValue) * (float) (isPolluant ? 7 : 5) / 100f);
+        if (!isPercentagePolluant()) {
+            fluctuationMin = ((max - initialValue) * (float) (isPolluant ? 5 : 3) / 100f);
+            fluctuationMax = ((max - initialValue) * (float) (isPolluant ? 7 : 5) / 100f);
+        } else {
+            fluctuationMin = (max / (100 + max)) * 50f / 100f;
+            fluctuationMax = (max / (100 + max)) * 75f / 100f;
+        }
     }
 }

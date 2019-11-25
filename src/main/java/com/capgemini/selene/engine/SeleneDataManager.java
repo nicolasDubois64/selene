@@ -39,9 +39,9 @@ public class SeleneDataManager {
         dataset.add(new SeleneData(data.getName(), data.getKind(), data.isPolluant(), data.getUnit(), data.getChemicalElement(), data.getMin(), data.getMax()));
     }
 
-    // TODO : just call dfm.fluctuate and compute call data.fluctuate() directly in DFM.
+    // TODO : just call dfm.addValue and compute call data.addValue() directly in DFM.
     public static void fluctuate() {
-        System.err.println("##############################NEXT DAY ##############################");
+        System.err.println("############################## DAY " + SeleneEngine.getDay() + " ##############################");
         fluctuationManagers.stream().forEach(DataFluctuationManager::nextDay);
     }
 
