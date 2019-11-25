@@ -2,6 +2,7 @@ package com.capgemini.selene.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public interface DeserialiserJson<T> {
@@ -37,5 +38,13 @@ public interface DeserialiserJson<T> {
 	     * @throws IOException
 	     */
 	    List<T> getList(File file) throws IOException;
+	    
+	    /**
+	     * Method to deserialize JSON Array content from given InputStream into a list of given Java type.
+	     * @param file
+	     * @return
+	     * @throws IOException
+	     */
+	    List<T> getList(InputStream stream) throws IOException;
 	
 }

@@ -4,8 +4,8 @@ import com.capgemini.selene.engine.SeleneDataManager;
 import com.capgemini.selene.engine.SeleneEngine;
 import com.capgemini.selene.model.SeleneData;
 import com.capgemini.selene.model.SeleneEvent;
-import com.capgemini.selene.parser.SeleneDataParser;
 import com.capgemini.selene.randomizer.DataFluctuationManager;
+import com.capgemini.selene.randomizer.RandomEventsManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,11 +22,12 @@ public class SeleneController {
     public String isAlive() {
         return "Bonjour père.";
     }
-
-    @RequestMapping(value = "/json", method = RequestMethod.GET)
-    public SeleneEvent getEvents() {
-        return SeleneDataParser.getTest();
-    }
+	
+	@RequestMapping(value="/event", method=RequestMethod.GET)
+    public SeleneEvent getEvent() {
+		RandomEventsManager manager = new RandomEventsManager();
+		return manager.getNextEvent();
+	}
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/data", method = RequestMethod.GET)
