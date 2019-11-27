@@ -6,15 +6,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SeleneData {
     private static AtomicInteger rankProvider = new AtomicInteger();
 
-    private final String name;
-    private final Kind kind;
-    private final boolean isPolluant;
-    private final Unit unit;
+    private  String name;
+    private  Kind kind;
+    private  boolean polluant;
+    private  Unit unit;
     private String chemicalElement;
-    private final float min;
-    private final float max;
-    private final float initialValue;
-    private final int rank;
+    private  float min;
+    private  float max;
+    private  float initialValue;
+    private  int rank;
 
     private float value;
 
@@ -26,10 +26,12 @@ public class SeleneData {
         return initialValue;
     }
 
-    public SeleneData(String name, Kind kind, boolean isPolluant, Unit unit, String chemicalElement, float min, float max) {
+    public SeleneData(){}
+
+    public SeleneData(String name, Kind kind, boolean polluant, Unit unit, String chemicalElement, float min, float max) {
         this.name = name;
         this.kind = kind;
-        this.isPolluant = isPolluant;
+        this.polluant = polluant;
         this.unit = unit;
         this.chemicalElement = chemicalElement;
         this.min = min;
@@ -53,7 +55,7 @@ public class SeleneData {
     }
 
     public boolean isPolluant() {
-        return isPolluant;
+        return polluant;
     }
 
     public String getChemicalElement() {
@@ -122,13 +124,13 @@ public class SeleneData {
     }
 
     public boolean isPercentagePolluant() {
-        return Unit.PERCENTAGE.equals(unit) && isPolluant;
+        return Unit.PERCENTAGE.equals(unit) && polluant;
     }
 
     private void computeFluctuation() {
         if (!isPercentagePolluant()) {
-            fluctuationMin = ((max - initialValue) * (float) (isPolluant ? 5 : 3) / 100f);
-            fluctuationMax = ((max - initialValue) * (float) (isPolluant ? 7 : 5) / 100f);
+            fluctuationMin = ((max - initialValue) * (float) (polluant ? 5 : 3) / 100f);
+            fluctuationMax = ((max - initialValue) * (float) (polluant ? 7 : 5) / 100f);
         } else {
             fluctuationMin = (max / (100 + max)) * 50f / 100f;
             fluctuationMax = (max / (100 + max)) * 75f / 100f;

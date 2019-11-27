@@ -2,6 +2,7 @@ package com.capgemini.selene.engine;
 
 import com.capgemini.selene.model.SeleneData;
 import com.capgemini.selene.model.SeleneDataEnum;
+import com.capgemini.selene.parser.SeleneDataParser;
 import com.capgemini.selene.randomizer.DataFluctuationManager;
 
 import java.util.ArrayList;
@@ -20,23 +21,12 @@ public class SeleneDataManager {
     private final static Set<SeleneData> dataset = new HashSet<>();
 
     public static void generateData() {
-        generateDataset();
+        dataset.addAll(SeleneDataParser.getSeleneData());
         // Init fluctuationManager for each data
         for (SeleneData data : dataset) {
             fluctuationManagers.add(new DataFluctuationManager(data));
         }
         fluctuationManagers.sort(SeleneDataManager::compare);
-    }
-
-    private static void generateDataset() {
-        // TODO : replace with Jackson parsing.
-        for (SeleneDataEnum data : SeleneDataEnum.values())
-            instanciateData(data);
-    }
-
-    // TODO : Lire via JSON, virer l'enum.
-    private static void instanciateData(SeleneDataEnum data) {
-        dataset.add(new SeleneData(data.getName(), data.getKind(), data.isPolluant(), data.getUnit(), data.getChemicalElement(), data.getMin(), data.getMax()));
     }
 
     // TODO : just call dfm.addValue and compute call data.addValue() directly in DFM.

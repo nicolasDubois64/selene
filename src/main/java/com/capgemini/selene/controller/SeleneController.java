@@ -22,7 +22,8 @@ public class SeleneController {
     public String isAlive() {
         return "Bonjour père.";
     }
-	
+
+    @CrossOrigin(origins = "*")
 	@RequestMapping(value="/event", method=RequestMethod.GET)
     public SeleneEvent getEvent() {
 		RandomEventsManager manager = new RandomEventsManager();

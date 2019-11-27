@@ -68,13 +68,16 @@ public enum SeleneDataEnum {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(name);
-        if (!("".equals(chemicalElement)))
-            sb.append('(' + chemicalElement + ')');
-        sb.append(", " + kind.getName());
-        sb.append(", " + min + unit.getSymbol());
-        sb.append(" < x < ");
-        sb.append(max + unit.getSymbol());
+        StringBuilder sb = new StringBuilder("{");
+        sb.append(System.lineSeparator());
+        sb.append("\"name\" : \"").append(name).append("\",").append(System.lineSeparator());
+        sb.append("\"kind\" : \"").append(kind).append("\",").append(System.lineSeparator());
+        sb.append("\"isPolluant\" : \"").append(isPolluant).append("\",").append(System.lineSeparator());
+        sb.append("\"unit\" : \"").append(unit).append("\",").append(System.lineSeparator());
+        sb.append("\"chemicalElement\" : \"").append(chemicalElement).append("\",").append(System.lineSeparator());
+        sb.append("\"min\" : \"").append(min).append("\",").append(System.lineSeparator());
+        sb.append("\"max\" : \"").append(max).append("\"").append(System.lineSeparator());
+        sb.append("},");
         return sb.toString();
     }
 

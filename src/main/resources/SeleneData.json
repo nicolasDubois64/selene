@@ -1,0 +1,251 @@
+[
+	{
+		"name" : "Calcium",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "Ca2+",
+		"min" : "5.0",
+		"max" : "450.0"
+	},
+
+	{
+		"name" : "Magnésium",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "Mg2+",
+		"min" : "0.0",
+		"max" : "100.0"
+	},
+
+	{
+		"name" : "Sodium",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "Na+",
+		"min" : "0.0",
+		"max" : "150.0"
+	},
+
+	{
+		"name" : "Bicarbonate",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "100.0",
+		"max" : "1000.0"
+	},
+
+	{
+		"name" : "Sulfates",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "130.0"
+	},
+
+	{
+		"name" : "Chlorures",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "50.0"
+	},
+
+	{
+		"name" : "Fluorures",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "30.0"
+	},
+
+	{
+		"name" : "Silice",
+		"kind" : "WATER",
+		"polluant" : "false",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "30.0"
+	},
+
+	{
+		"name" : "Nitrates",
+		"kind" : "WATER",
+		"polluant" : "true",
+		"unit" : "MILLIGRAM_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "4.5"
+	},
+
+	{
+		"name" : "Métaux lourds",
+		"kind" : "WATER",
+		"polluant" : "true",
+		"unit" : "MICROGRAM_PER_LITER",
+		"chemicalElement" : "Fe, Pb, Hg [mercure]",
+		"min" : "0.0",
+		"max" : "0.1"
+	},
+
+	{
+		"name" : "Escherichia coli",
+		"kind" : "WATER",
+		"polluant" : "true",
+		"unit" : "COLONY_FORMING_UNIT_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "10.0"
+	},
+
+	{
+		"name" : "Vibrio cholerea",
+		"kind" : "WATER",
+		"polluant" : "true",
+		"unit" : "COLONY_FORMING_UNIT_PER_LITER",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "0.1"
+	},
+
+	{
+		"name" : "Diazote",
+		"kind" : "AIR",
+		"polluant" : "false",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "N2",
+		"min" : "65.0",
+		"max" : "72.0"
+	},
+
+	{
+		"name" : "Dioxygène",
+		"kind" : "AIR",
+		"polluant" : "false",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "O2",
+		"min" : "17.0",
+		"max" : "21.0"
+	},
+
+	{
+		"name" : "Dioxyde de carbone",
+		"kind" : "AIR",
+		"polluant" : "false",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "CO2",
+		"min" : "0.0",
+		"max" : "0.8"
+	},
+
+	{
+		"name" : "Dioxyde d'azote",
+		"kind" : "AIR",
+		"polluant" : "true",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "NO2",
+		"min" : "0.0",
+		"max" : "0.01"
+	},
+
+	{
+		"name" : "Dioxyde de souffre",
+		"kind" : "AIR",
+		"polluant" : "true",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "SO2",
+		"min" : "0.0",
+		"max" : "0.03"
+	},
+
+	{
+		"name" : "Monoxyde de carbone",
+		"kind" : "AIR",
+		"polluant" : "true",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "CO",
+		"min" : "0.0",
+		"max" : "0.09"
+	},
+
+	{
+		"name" : "Legionelle pneumophila",
+		"kind" : "AIR",
+		"polluant" : "true",
+		"unit" : "PERCENTAGE",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "80.0"
+	},
+
+	{
+		"name" : "Consommation d'énergie",
+		"kind" : "ENERGY",
+		"polluant" : "true",
+		"unit" : "MEGAWATT_HOUR",
+		"chemicalElement" : "",
+		"min" : "30.0",
+		"max" : "180.0"
+	},
+
+	{
+		"name" : "Salmonella enterica",
+		"kind" : "FOOD",
+		"polluant" : "true",
+		"unit" : "COLONY_FORMING_UNIT_PER_KILOGRAM",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "9.0"
+	},
+
+	{
+		"name" : "Escherichia coli",
+		"kind" : "FOOD",
+		"polluant" : "true",
+		"unit" : "COLONY_FORMING_UNIT_PER_KILOGRAM",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "50.0"
+	},
+
+	{
+		"name" : "Listeria monocytogenes",
+		"kind" : "FOOD",
+		"polluant" : "true",
+		"unit" : "COLONY_FORMING_UNIT_PER_KILOGRAM",
+		"chemicalElement" : "",
+		"min" : "0.0",
+		"max" : "250.0"
+	},
+
+	{
+		"name" : "Température",
+		"kind" : "TEMPERATURE",
+		"polluant" : "false",
+		"unit" : "CELSIUS_DEGREE",
+		"chemicalElement" : "",
+		"min" : "18.0",
+		"max" : "27.0"
+	},
+
+	{
+		"name" : "Pression atmosphérique",
+		"kind" : "PRESSURE",
+		"polluant" : "false",
+		"unit" : "ATMOSPHERE",
+		"chemicalElement" : "",
+		"min" : "0.998",
+		"max" : "1.003"
+	}
+]
