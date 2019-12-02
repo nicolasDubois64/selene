@@ -4,6 +4,7 @@ import com.capgemini.selene.engine.SeleneDataManager;
 import com.capgemini.selene.engine.SeleneEngine;
 import com.capgemini.selene.model.SeleneData;
 import com.capgemini.selene.model.SeleneEvent;
+import com.capgemini.selene.parser.SeleneDataParser;
 import com.capgemini.selene.randomizer.DataFluctuationManager;
 import com.capgemini.selene.randomizer.RandomEventsManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,6 +29,12 @@ public class SeleneController {
     public SeleneEvent getEvent() {
 		RandomEventsManager manager = new RandomEventsManager();
 		return manager.getNextEvent();
+	}
+    
+    @CrossOrigin(origins = "*")
+	@RequestMapping(value="/events", method=RequestMethod.GET)
+    public List<SeleneEvent> getEvents() {
+		return SeleneDataParser.getSeleneEvents();
 	}
 
     @CrossOrigin(origins = "*")
