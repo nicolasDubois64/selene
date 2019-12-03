@@ -6,6 +6,9 @@ import com.capgemini.selene.model.*;
 import com.capgemini.selene.parser.SeleneDataParser;
 import com.capgemini.selene.randomizer.DataFluctuationManager;
 import com.capgemini.selene.randomizer.RandomEventsManager;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,23 +27,23 @@ public class SeleneController {
     }
 
     @CrossOrigin(origins = "*")
-	@RequestMapping(value="/event", method=RequestMethod.GET)
+    @RequestMapping(value = "/event", method = RequestMethod.GET)
     public SeleneEvent getEvent() {
-		RandomEventsManager manager = new RandomEventsManager();
-		return manager.getNextEvent();
-	}
-    
+        RandomEventsManager manager = new RandomEventsManager();
+        return manager.getNextEvent();
+    }
+
     @CrossOrigin(origins = "*")
-	@RequestMapping(value="/events", method=RequestMethod.GET)
+    @RequestMapping(value = "/events", method = RequestMethod.GET)
     public List<SeleneEvent> getEvents() {
-		return SeleneDataParser.getSeleneEvents();
-	}
-    
+        return SeleneDataParser.getSeleneEvents();
+    }
+
     @CrossOrigin(origins = "*")
-   	@RequestMapping(value="/doc", method=RequestMethod.GET)
-       public String getDoc() {
-   		return SeleneDataParser.getDoc();
-   	}
+    @RequestMapping(value = "/doc", method = RequestMethod.GET)
+    public String getDoc() {
+        return SeleneDataParser.getDoc();
+    }
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/data", method = RequestMethod.GET)
@@ -54,17 +57,29 @@ public class SeleneController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/data2", method = RequestMethod.GET)
-    public SelenePOJO getData2() {
+    @RequestMapping(value = "/data2", method = RequestMethod.GET, produces = {"application/json"})
+    public String getData2() {
         SeleneEngine.nextDay();
 
-        List<SeleneDataPOJO>  data = SeleneDataManager.fluctuationManagers.stream().map(dfm -> new SeleneDataPOJO(dfm.getData())).collect(Collectors.toList());
+        List<SeleneDataPOJO> data = SeleneDataManager.fluctuationManagers.stream().map(dfm -> new SeleneDataPOJO(dfm.getData())).collect(Collectors.toList());
 
         RandomEventsManager manager = new RandomEventsManager();
         SeleneEventPOJO event = new SeleneEventPOJO(manager.getNextEvent());
-        return new SelenePOJO(SeleneEngine.getDate(), data, event);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String s = "";
+        try {
+            SelenePOJO pojo = new SelenePOJO(SeleneEngine.getDate(), data, event);
+            s = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pojo);
+            mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return s;
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/next_day", method = RequestMethod.GET)
     public String getNextDay() {
         SeleneEngine.nextDay();
@@ -81,6 +96,24 @@ public class SeleneController {
     public List<SeleneData> getDataJson() {
         SeleneEngine.nextDay();
         return SeleneDataManager.fluctuationManagers.stream().map(DataFluctuationManager::getData).collect(Collectors.toList());
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/waterleau", method = RequestMethod.GET)
+    public void purgeWater() {
+        SeleneEngine.purge(Kind.WATER);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/chauffe_marcel", method = RequestMethod.GET)
+    public void purgeAir() {
+        SeleneEngine.purge(Kind.AIR);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/space_deliveroo", method = RequestMethod.GET)
+    public void purgeFood() {
+        SeleneEngine.purge(Kind.FOOD);
     }
 
 }

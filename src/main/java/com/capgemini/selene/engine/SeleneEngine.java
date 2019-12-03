@@ -1,5 +1,8 @@
 package com.capgemini.selene.engine;
 
+import com.capgemini.selene.model.Kind;
+import com.capgemini.selene.randomizer.DataFluctuationManager;
+
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,6 +18,10 @@ public class SeleneEngine {
         // Flutuate
         SeleneDataManager.fluctuate();
 
+    }
+
+    public static void purge(Kind kind) {
+        SeleneDataManager.fluctuationManagers.stream().filter(dfm -> kind.equals(dfm.getData().getKind()) && dfm.canPurge()).forEach(DataFluctuationManager::purge);
     }
 
     public static AtomicInteger getDay() {

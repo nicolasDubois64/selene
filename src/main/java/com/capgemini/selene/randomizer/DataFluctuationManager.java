@@ -4,6 +4,7 @@ import com.capgemini.selene.model.SeleneData;
 import com.capgemini.selene.model.Unit;
 
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class DataFluctuationManager {
 
@@ -18,6 +19,8 @@ public class DataFluctuationManager {
     private FluctuationMode mode;
     private float straightTarget = 0;
     private float straightStep = 0;
+
+    private ReentrantLock lock = new ReentrantLock();
 
     private enum FluctuationMode {
         STRAIGHT,
@@ -42,30 +45,39 @@ public class DataFluctuationManager {
     }
 
     public void nextDay() {
-        if (data.getUnit() == Unit.PERCENTAGE) {
-            if (Double.compare(data.getValue(), 100f) >= 0) return;
-            if (data.isPolluant()) {
-                addRandomValue();
-                return;
+        lock.lock();
+        try {
+            if (data.getUnit() == Unit.PERCENTAGE) {
+                if (Double.compare(data.getValue(), 100f) >= 0) return;
+                if (data.isPolluant()) {
+                    addRandomValue();
+                    return;
+                }
             }
-        }
-        switch (mode) {
-            case RANDOM:
-                doRandom();
-                break;
-            case STRAIGHT:
-                doStraight();
-                break;
-            case PATTERN:
+            switch (mode) {
+                case RANDOM:
+                    doRandom();
+                    break;
+                case STRAIGHT:
+                    doStraight();
+                    break;
+                case PATTERN:
 //                doPattern();
-                break;
-            default:
-                return;
+                    break;
+                default:
+                    return;
+            }
+        } finally {
+            lock.unlock();
         }
     }
 
     public SeleneData getData() {
         return data;
+    }
+
+    public boolean canPurge() {
+        return data.isPolluant() && data.getValue() > data.getMax();
     }
 
     @Override
@@ -156,8 +168,10 @@ public class DataFluctuationManager {
     // STRAIGHT
 
     private void doStraight() {
-        data.addValue(straightStep);
-        if ((increase && data.getValue() > straightTarget) || (!increase && data.getValue() < straightTarget)) {
+        if (data.isPolluant() && straightTarget == 0 && (data.getValue() + straightStep) < 0) {
+            data.addValue(-data.getValue());
+        } else data.addValue(straightStep);
+        if ((increase && data.getValue() >= straightTarget) || (!increase && data.getValue() <= straightTarget)) {
             increase = !increase;
             setRandom();
         }
@@ -172,6 +186,23 @@ public class DataFluctuationManager {
     }
 
     // TODO : PATTERN
+
+    // PURGE
+    public void purge() {
+        lock.lock();
+        try {
+            System.err.println(data.getName() + " PURGED");
+            mode = FluctuationMode.STRAIGHT;
+            Random rand = new Random();
+            increase = false;
+            straightTarget = 0;
+            straightStep = -(Math.abs(data.getValue() - mediumValue) * ((float) rand.nextInt(65 - 40) + 40)) / 100f;
+            timeLeft = 0;
+            lastTimeLeftGenerated = 0;
+        } finally {
+            lock.unlock();
+        }
+    }
 
     // DEBUG
 

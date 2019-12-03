@@ -28,6 +28,7 @@ public enum SeleneDataEnum {
     DIOXYDE_DE_SOUFFRE("Dioxyde de souffre", Kind.AIR, true, Unit.PERCENTAGE, "SO2", 0, 0.03f),
     MONOXYDE_DE_CARBONE("Monoxyde de carbone", Kind.AIR, true, Unit.PERCENTAGE, "CO", 0, 0.09f),
     LEGIONELLA_PNEUMOPHILA("Legionelle pneumophila", Kind.AIR, true, Unit.PERCENTAGE, 0, 80),
+    // ENERGIE
     CONSOMMATION_ENERGIE("Consommation d'énergie", Kind.ENERGY, true, Unit.MEGAWATT_HOUR, 30, 180),
     // NOURRITURE
     // Polluants
