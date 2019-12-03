@@ -75,6 +75,7 @@ public class SeleneData {
     }
 
     public void setValue(int value) {
+
         this.value = value;
     }
 
@@ -136,4 +137,12 @@ public class SeleneData {
             fluctuationMax = (max / (100 + max)) * 75f / 100f;
         }
     }
+
+    public void initValue(){
+        this.value = isPercentagePolluant() ? 0 : min + ((max - min) / 2f);
+        this.initialValue = this.value;
+        computeFluctuation();
+        rank = rankProvider.getAndIncrement();
+    }
+
 }

@@ -62,6 +62,7 @@ public class SeleneDataParser {
 		try {
 			InputStream inputStream = new ClassPathResource("SeleneData.json").getInputStream();
 			result = dataParser.getList(inputStream);
+			result.forEach(s -> s.initValue());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
