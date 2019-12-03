@@ -183,7 +183,7 @@
 		"name" : "Legionelle pneumophila",
 		"kind" : "AIR",
 		"polluant" : "true",
-		"unit" : "PERCENTAGE",
+		"unit" : "COLONY_FORMING_UNIT_PER_LITER",
 		"chemicalElement" : "",
 		"min" : "0.0",
 		"max" : "80.0"
