@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DeserialiserJsonImpl<T> implements DeserialiserJson<T> {
@@ -35,11 +37,19 @@ public class DeserialiserJsonImpl<T> implements DeserialiserJson<T> {
 	@Override
 	public List<T> getList(File file) throws IOException {
 		return objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz));
+		
 	}
 
 	@Override
 	public List<T> getList(InputStream stream) throws IOException {
 		return objectMapper.readValue(stream, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz));
+	}
+	
+	@Override
+	public String getPrettyJson(InputStream stream) throws IOException {
+		Object jsonObject = objectMapper.readValue(stream, Object.class);
+		return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
+
 	}
 
 }

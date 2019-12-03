@@ -35,6 +35,12 @@ public class SeleneController {
     public List<SeleneEvent> getEvents() {
 		return SeleneDataParser.getSeleneEvents();
 	}
+    
+    @CrossOrigin(origins = "*")
+   	@RequestMapping(value="/doc", method=RequestMethod.GET)
+       public String getDoc() {
+   		return SeleneDataParser.getDoc();
+   	}
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/data", method = RequestMethod.GET)

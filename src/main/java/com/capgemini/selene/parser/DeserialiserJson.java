@@ -46,5 +46,13 @@ public interface DeserialiserJson<T> {
 	     * @throws IOException
 	     */
 	    List<T> getList(InputStream stream) throws IOException;
+	    
+	    /**
+	     * Method to deserialize JSON from given InputStream into a pretty string
+	     * @param file
+	     * @return
+	     * @throws IOException
+	     */
+	    String getPrettyJson(InputStream stream) throws IOException;
 	
 }
