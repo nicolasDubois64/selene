@@ -5,16 +5,18 @@ public class SeleneEvent {
 	private String description;
 	private String criticality;
 	private double probability;
+	private int duration;
 	
 	public SeleneEvent() {
 		super();
 	}
 
-	public SeleneEvent(String title, String description, String criticality, int probability) {
+	public SeleneEvent(String title, String description, String criticality, int probability, int duration) {
 		this.title = title;
 		this.description = description;
 		this.criticality = criticality;
 		this.probability = probability;
+		this.duration = duration;
 	}
 
 	public String getTitle() {
@@ -47,5 +49,13 @@ public class SeleneEvent {
 
 	public void setProbability(double probability) {
 		this.probability = probability;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 }
