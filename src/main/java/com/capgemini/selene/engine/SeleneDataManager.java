@@ -1,7 +1,6 @@
 package com.capgemini.selene.engine;
 
 import com.capgemini.selene.model.SeleneData;
-import com.capgemini.selene.model.SeleneDataEnum;
 import com.capgemini.selene.parser.SeleneDataParser;
 import com.capgemini.selene.randomizer.DataFluctuationManager;
 
@@ -31,7 +30,6 @@ public class SeleneDataManager {
 
     // TODO : just call dfm.addValue and compute call data.addValue() directly in DFM.
     public static void fluctuate() {
-        System.err.println("############################## DAY " + SeleneEngine.getDay() + " ##############################");
         fluctuationManagers.stream().forEach(DataFluctuationManager::nextDay);
     }
 

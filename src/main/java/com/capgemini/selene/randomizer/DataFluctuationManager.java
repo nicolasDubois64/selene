@@ -152,9 +152,7 @@ public class DataFluctuationManager {
     }
 
     private void setStraight() {
-        System.err.println(data.getName() + " straight mode");
         mode = FluctuationMode.STRAIGHT;
-        //        System.err.println(debugString());
         Random rand = new Random();
         increase = !increase;
         int delta = rand.nextInt(6) - 3;
@@ -178,7 +176,6 @@ public class DataFluctuationManager {
     }
 
     private void setRandom() {
-        System.err.println(data.getName() + " random mode");
         straightTarget = 0;
         straightStep = 0;
         mode = FluctuationMode.RANDOM;
@@ -191,7 +188,6 @@ public class DataFluctuationManager {
     public void purge() {
         lock.lock();
         try {
-            System.err.println(data.getName() + " PURGED");
             mode = FluctuationMode.STRAIGHT;
             Random rand = new Random();
             increase = false;
@@ -222,7 +218,7 @@ public class DataFluctuationManager {
     }
 
     private void debugUpdateDataValue(float i) {
-        if (data.getName() == "Calcium")
+        /*if (data.getName() == "Calcium")
             System.err.println(data.getName()
                     + data.debugString()
                     + "mediumValue : " + mediumValue
@@ -230,6 +226,6 @@ public class DataFluctuationManager {
                     + "; i : " + i
                     + "; npolMin : " + nonPolluantMin
                     + "; npolMax : " + nonPolluantMax
-                    + "]");
+                    + "]");*/
     }
 }

@@ -23,7 +23,7 @@ public class SeleneController {
 
     @RequestMapping(value = "/isAlive", method = RequestMethod.GET)
     public String isAlive() {
-        return "Bonjour père.";
+        return "Je suis en vie.";
     }
 
     @CrossOrigin(origins = "*")
@@ -33,18 +33,7 @@ public class SeleneController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/data", method = RequestMethod.GET)
-    public String getData() {
-        SeleneEngine.nextDay();
-        StringBuilder sb = new StringBuilder();
-        for (DataFluctuationManager dfm : SeleneDataManager.fluctuationManagers) {
-            sb.append(dfm.getData().toString()).append(dfm.toString()).append("<br />");
-        }
-        return sb.toString();
-    }
-
-    @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/data2", method = RequestMethod.GET, produces = {"application/json"})
+    @RequestMapping(value = "/data", method = RequestMethod.GET, produces = {"application/json"})
     public String getData2() {
         SeleneEngine.nextDay();
 
@@ -76,13 +65,6 @@ public class SeleneController {
         sb.append(". Current day is ");
         sb.append(SeleneEngine.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         return sb.toString();
-    }
-
-    @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/data_json", method = RequestMethod.GET)
-    public List<SeleneData> getDataJson() {
-        SeleneEngine.nextDay();
-        return SeleneDataManager.fluctuationManagers.stream().map(DataFluctuationManager::getData).collect(Collectors.toList());
     }
 
     @CrossOrigin(origins = "*")

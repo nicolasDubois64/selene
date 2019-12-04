@@ -1,8 +1,8 @@
 {
 	"webServices": {
-		"/isAlive": "Simple string to test if the backend is launched",
-		"/doc": "Brief documentation to retrieve the available url and json structure",
-		"/data_json": "Sends a json with all the data from the lunar base at time T",
+		"/isAlive": "Simple string to test if the backend is alive.",
+		"/doc": "You've just used it !",
+		"/data": "Sends a json with all the data from the lunar base at time T",
 		"/waterleau": "Allows to activate the water purifiers of the lunar base",
 		"/chauffe_marcel": "Allows to activate the air filters of the lunar base",
 		"/space_deliveroo": "Allows to start the sanitation of the food of the lunar base"
