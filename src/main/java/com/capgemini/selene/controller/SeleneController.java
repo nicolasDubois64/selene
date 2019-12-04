@@ -27,19 +27,6 @@ public class SeleneController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/event", method = RequestMethod.GET)
-    public SeleneEvent getEvent() {
-        RandomEventsManager manager = new RandomEventsManager();
-        return manager.getNextEvent();
-    }
-
-    @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/events", method = RequestMethod.GET)
-    public List<SeleneEvent> getEvents() {
-        return SeleneDataParser.getSeleneEvents();
-    }
-
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/doc", method = RequestMethod.GET)
     public String getDoc() {
         return SeleneDataParser.getDoc();
