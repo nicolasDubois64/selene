@@ -27,7 +27,7 @@ public class SeleneController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/doc", method = RequestMethod.GET)
+    @RequestMapping(value = "/doc", method = RequestMethod.GET, produces = "application/json")
     public String getDoc() {
         return SeleneDataParser.getDoc();
     }

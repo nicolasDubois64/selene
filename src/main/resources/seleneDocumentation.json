@@ -1,0 +1,153 @@
+{
+	"webServices": {
+		"/isAlive": "Simple string to test if the backend is launched",
+		"/doc": "Brief documentation to retrieve the available url and json structure",
+		"/data_json": "Sends a json with all the data from the lunar base at time T",
+		"/waterleau": "Allows to activate the water purifiers of the lunar base",
+		"/chauffe_marcel": "Allows to activate the air filters of the lunar base",
+		"/space_deliveroo": "Allows to start the sanitation of the food of the lunar base"
+	},
+	"data": {
+		"water": {
+			"calcium": {
+				"unit": "mg/L",
+				"min": "5.0",
+				"max": "450.0",
+				"comment": "Ca2+"
+			},
+			"fluorures": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "30.0"
+			},
+			"heavy metals": {
+				"unit": "µg/L",
+				"min": "0.0",
+				"max": "0.1",
+				"comment": "Fe, Pb, Hg"
+			},
+			"sulfates": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "130.0"
+			},
+			"bicarbonate": {
+				"unit": "mg/L",
+				"min": "100.0",
+				"max": "1000.0"
+			},
+			"sodium": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "150.0",
+				"comment": "Na+"
+			},
+			"chlorures": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "50.0"
+			},
+			"magnesium": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "100.0",
+				"comment": "Mg2+"
+			},
+			"silice": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "30.0"
+			},
+			"vibrio cholerea": {
+				"unit": "UFC/L",
+				"min": "0.0",
+				"max": "0.1"
+			},
+			"nitrates": {
+				"unit": "mg/L",
+				"min": "0.0",
+				"max": "4.5"
+			},
+			"escherichia coli": {
+				"unit": "UFC/L",
+				"min": "0.0",
+				"max": "10.0"
+			}
+		},
+		"air": {
+			"carbon dioxide": {
+				"unit": "%",
+				"min": "0.0",
+				"max": "0.8",
+				"comment": "CO2"
+			},
+			"legionelle pneumophila": {
+				"unit": "UFC/L",
+				"min": "0.0",
+				"max": "0.80"
+			},
+			"sulphur dioxide": {
+				"unit": "%",
+				"min": "0.0",
+				"max": "0.03",
+				"comment": "SO2"
+			},
+			"dioxygene": {
+				"unit": "%",
+				"min": "17.0",
+				"max": "21.0",
+				"comment": "O2"
+			},
+			"dinitrogen": {
+				"unit": "%",
+				"min": "65.0",
+				"max": "72.0",
+				"comment": "N2"
+			},
+			"carbon monoxide": {
+				"unit": "%",
+				"min": "0.0",
+				"max": "0.09",
+				"comment": "CO"
+			},
+			"nitrogen dioxide ": {
+				"unit": "%",
+				"min": "0.0",
+				"max": "0.01",
+				"comment": "NO2"
+			}
+		},
+		"food": {
+			"escherichia coli": {
+				"unit": "UFC/kg",
+				"min": "0.0",
+				"max": "50.0"
+			},
+			"listeria monocytogenes": {
+				"unit": "UFC/kg",
+				"min": "0.0",
+				"max": "250.0"
+			},
+			"salmonella enterica": {
+				"unit": "UFC/kg",
+				"min": "0.0",
+				"max": "9.0"
+			}
+		},
+		"energy use": {
+			"unit": "MWh",
+			"min": "30.0",
+			"max": "180.0"
+		},
+		"temperature": {
+			"unit": "°C",
+			"min": "18.0",
+			"max": "27.0"
+		},
+		"atmospheric pressure": {
+			"unit": "atm",
+			"min": "0.998",
+			"max": "1.003"
+		}
+	}
+}
