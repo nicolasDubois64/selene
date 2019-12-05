@@ -3,15 +3,15 @@
 		"title": "",
 		"description": "",
 		"criticality": "low",
-		"probability": "35",
-		"duration": "15"
+		"probability": "90",
+		"duration": "20"
 	},
 	{
 		"title": "Troposphère VII",
 		"description": "La fusée Troposphère VII du programme spatial congolais vient d'atteindre Phobos, l'un des satellites de Mars",
 		"criticality": "low",
 		"probability": "30",
-		"duration": "30"
+		"duration": "40"
 	},
 	{
 		"title": "USCSS Nostromo",
@@ -25,20 +25,20 @@
 		"description": "L'indice de la bourse démoniaque est en chute libre depuis le réveil du Doom Slayer sur Mars.",
 		"criticality": "medium",
 		"probability": "20",
-		"duration": "20"
+		"duration": "30"
 	},
 	{
 		"title": "Christ Cosmique",
 		"description": "Le Christ cosmique a fait sensation en annonçant sa candidature à l'élection présidentielle 2032. Un temps démentie, l'information pourrait être authentique.",
 		"criticality": "medium",
-		"probability": "50",
-		"duration": "20"
+		"probability": "20",
+		"duration": "30"
 	},
 	{
 		"title": "Cheyenne Moutain",
 		"description": "Pic d'énergie anormal détecté aux alentours de Cheyenne Moutain, une base de l'US Air Force.",
 		"criticality": "low",
-		"probability": "60",
+		"probability": "50",
 		"duration": "50"
 	},
 	{
@@ -46,35 +46,35 @@
 		"description": "Effervescence sur la planète Terre. Les petits bonshommes verts ont enfin décidé de nous rendre visite.",
 		"criticality": "high",
 		"probability": "10",
-		"duration": "10"
+		"duration": "50"
 	},
 	{
 		"title": "Eruption Solaire",
 		"description": "Une éruption solaire massive a été détecté. Risque important de déterioration du service de communication StarNet",
 		"criticality": "medium",
-		"probability": "60",
-		"duration": "20"
+		"probability": "50",
+		"duration": "30"
 	},
 	{
 		"title": "Danger météorite",
 		"description": "Une pluie de météorite risque de s'abattre sur la Lune durant les prochains jours. Nous conseillons à tous nos résidents d'éviter les promenades romantiques au clair de Terre",
 		"criticality": "high",
 		"probability": "50",
-		"duration": "35"
+		"duration": "30"
 	},
 	{
 		"title": "Comète d'Arrest",
 		"description": "Passage prévu de la comète 6P/d'Arrest (appelée également comète d'Arrest) entre la Terre et la Lune. Pensez à faire un voeu !",
 		"criticality": "low",
-		"probability": "5",
-		"duration": "15"
+		"probability": "10",
+		"duration": "50"
 	},
 	{
 		"title": "Mise à jour du super calculateur Joliot-Curie IV",
 		"description": "Joliot-Curie IV sera coupé 2-3 le temps de faire une opération de maintenance.",
 		"criticality": "low",
 		"probability": "35",
-		"duration": "20"
+		"duration": "30"
 	},
 	{
 		"title": "Panne de la climatisation",
@@ -88,28 +88,28 @@
 		"description": "Les radiateurs sont hors services pour une durée indéterminé. Veulliez vous équiper immédiatement de votre équipement de survie.",
 		"criticality": "high",
 		"probability": "20",
-		"duration": "20"
+		"duration": "30"
 	},
 	{
 		"title": "Programme Cinéma Hebdomadaire",
 		"description": "Cette semaine, dans le premier cinéma extra terrien de la galaxie, nous projetons Star Wars XII : La Résurection des Skywalker",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "10"
+		"duration": "30"
 	},
 	{
 		"title": "Programme Cinéma Hebdomadaire",
 		"description": "Cette semaine, dans le premier et le seul cinéma lunaire, nous projetons Alad'7",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "10"
+		"duration": "30"
 	},
 	{
 		"title": "Programme Cinéma Hebdomadaire",
 		"description": "Cette semaine, nous projetons Avatar 3 de James Cameron, le film aux 10 ans de pré-production et aux 12 ans de post-production",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "10"
+		"duration": "30"
 	}
 	,
 	{
@@ -117,6 +117,6 @@
 		"description": "La finale de la coupe des cratères vient de tomber: le FC Albategnius affrontera le CO Moretus",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "10"
+		"duration": "30"
 	}
 ]

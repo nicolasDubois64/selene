@@ -14,6 +14,8 @@ import com.capgemini.selene.utils.RandomCollection;
 public class RandomEventsManager {
 	
 	private static RandomCollection<SeleneEvent> randomEvents = new RandomCollection<>();
+	private static int remainingDuration = 0;
+	private static SeleneEvent currentEvent = new SeleneEvent();
 
 	public RandomEventsManager() {
 		initRandomCollection();
@@ -28,11 +30,20 @@ public class RandomEventsManager {
 	}
 	
 	/**
-	 * Get an event randomly
+	 * Get an event randomly and returns it until the end of its term
 	 * @return
 	 */
 	public SeleneEvent getNextEvent() {
-		return randomEvents.next();
+		SeleneEvent result;
+		if (remainingDuration <= 0) {
+			currentEvent = randomEvents.next();
+			remainingDuration = currentEvent.getDuration();
+			result = currentEvent;
+		} else {
+			result = currentEvent;
+			remainingDuration--;
+		}
+		return result;
 	}
 
 }
