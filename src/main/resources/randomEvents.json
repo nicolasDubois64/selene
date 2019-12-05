@@ -11,35 +11,35 @@
 		"description": "La fusée Troposphère VII du programme spatial congolais vient d'atteindre Phobos, l'un des satellites de Mars",
 		"criticality": "low",
 		"probability": "30",
-		"duration": "40"
+		"duration": "35"
 	},
 	{
 		"title": "USCSS Nostromo",
 		"description": "Le cargo interstellaire USCSS Nostromo vient d'atterrir sur Selene avec à son bord un seul membre d'equipage, Ellen Ripley.",
 		"criticality": "low",
 		"probability": "40",
-		"duration": "40"
+		"duration": "35"
 	},
 	{
 		"title": "Doom Slayer",
 		"description": "L'indice de la bourse démoniaque est en chute libre depuis le réveil du Doom Slayer sur Mars.",
 		"criticality": "medium",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Christ Cosmique",
 		"description": "Le Christ cosmique a fait sensation en annonçant sa candidature à l'élection présidentielle 2032. Un temps démentie, l'information pourrait être authentique.",
 		"criticality": "medium",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Cheyenne Moutain",
 		"description": "Pic d'énergie anormal détecté aux alentours de Cheyenne Moutain, une base de l'US Air Force.",
 		"criticality": "low",
 		"probability": "50",
-		"duration": "50"
+		"duration": "40"
 	},
 	{
 		"title": "Attaque des pti zom vert",
@@ -53,14 +53,14 @@
 		"description": "Une éruption solaire massive a été détecté. Risque important de déterioration du service de communication StarNet",
 		"criticality": "medium",
 		"probability": "50",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Danger météorite",
 		"description": "Une pluie de météorite risque de s'abattre sur la Lune durant les prochains jours. Nous conseillons à tous nos résidents d'éviter les promenades romantiques au clair de Terre",
 		"criticality": "high",
 		"probability": "50",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Comète d'Arrest",
@@ -74,42 +74,42 @@
 		"description": "Joliot-Curie IV sera coupé 2-3 le temps de faire une opération de maintenance.",
 		"criticality": "low",
 		"probability": "35",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Panne de la climatisation",
 		"description": "Une panne de certains transformateurs de la station empeche la climatisation de fonctionner à son niveau optimal.",
 		"criticality": "medium",
 		"probability": "35",
-		"duration": "40"
+		"duration": "35"
 	},
 	{
 		"title": "Dysfonctionnement des radiateurs",
 		"description": "Les radiateurs sont hors services pour une durée indéterminé. Veulliez vous équiper immédiatement de votre équipement de survie.",
 		"criticality": "high",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Programme Cinéma Hebdomadaire",
 		"description": "Cette semaine, dans le premier cinéma extra terrien de la galaxie, nous projetons Star Wars XII : La Résurection des Skywalker",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Programme Cinéma Hebdomadaire",
 		"description": "Cette semaine, dans le premier et le seul cinéma lunaire, nous projetons Alad'7",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	},
 	{
 		"title": "Programme Cinéma Hebdomadaire",
 		"description": "Cette semaine, nous projetons Avatar 3 de James Cameron, le film aux 10 ans de pré-production et aux 12 ans de post-production",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	}
 	,
 	{
@@ -117,6 +117,6 @@
 		"description": "La finale de la coupe des cratères vient de tomber: le FC Albategnius affrontera le CO Moretus",
 		"criticality": "low",
 		"probability": "20",
-		"duration": "30"
+		"duration": "35"
 	}
 ]
