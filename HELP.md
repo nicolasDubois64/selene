@@ -1,4 +1,21 @@
-# Getting Started
+# How to Build and Run
+
+We can simply build the project with the standard command
+	$ mvn clean install 
+and we run it with the following command
+	$ java -jar <artifact-name>
+
+# How to Start and Stop the back-end on windows
+
+When you launch the back-end on windows, it can be difficult to stop it cleanly (some processes have "trouble" ending) !
+So you can start your app and saves the process id in a file with
+	$ java -jar myapp.jar & echo $! > ./pid.file &
+And stops your app using the saved process id
+	$ kill $(cat ./pid.file)
+	
+You can also create scripts by simply adding #!/bin/bash
+
+# Documentation for a good start
 
 ### Reference Documentation
 For further reference, please consider the following sections:
