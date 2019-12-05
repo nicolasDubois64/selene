@@ -3,6 +3,8 @@ package com.capgemini.selene.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 // POJO to be sent via JSON
 public class SelenePOJO {
 
@@ -24,6 +26,7 @@ public class SelenePOJO {
         return data;
     }
 
+    @JsonProperty("breaking news")
     public SeleneEventPOJO getEvent() {
         return event;
     }
