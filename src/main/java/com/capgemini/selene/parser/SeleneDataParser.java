@@ -22,7 +22,7 @@ public class SeleneDataParser {
 	private static DeserialiserJsonImpl<String> stringParser = new DeserialiserJsonImpl<String>(String.class);
 	
 	//FILENAME
-	private final static String FILENAME_JSON_EVENTS = "RandomEvents.json";
+	private final static String FILENAME_JSON_EVENTS = "randomEvents.json";
 	private final static String FILENAME_JSON_DATA_STRUCTURE = "seleneDocumentation.json";
 
 	/*
